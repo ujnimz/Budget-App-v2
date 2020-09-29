@@ -112,10 +112,12 @@ class Budget {
     return true;
   }
 
+  // Save expenses object in local storage
   saveExpenses(){
     localStorage.setItem('expensesObj', JSON.stringify(this.expenseObj));
   }
 
+  // Add budget
   addBudget(){
     if(this.budget.value == '' || this.budget.value == 0) return false;
     if(isNaN(this.budget.value)) return false;
@@ -123,10 +125,12 @@ class Budget {
     return true;
   }
 
+  // Save budget in local storage
   saveBudget(){
     localStorage.setItem('budgetAmount', this.budgetObj);
   }
 
+  // Edit expense item
   editRow(selectedElement){
     if(this.clickEdit == true){
       this.formExpenses.querySelectorAll('label').forEach(label => {
@@ -141,6 +145,7 @@ class Budget {
     } 
   }
 
+  // Show total amount for expenses on UI
   showTotal(){
     let total = 0;
     for(let i = 0; i < this.expenseObj.length; i++) {
@@ -151,16 +156,19 @@ class Budget {
     this.totalExpenses = total;
   }
 
+  // Show budget amount on UI
   showBudget(){
     this.uiBudget.innerText = Number(this.budgetObj).toFixed(2);
     this.budget.value = this.budgetObj;
   }
 
+  // Show balance amount on UI
   showBalance(){
     this.balance = Number(this.budgetObj - this.totalExpenses).toFixed(2);
     this.uiBalance.innerText = this.balance;
   }
 
+  // Remove all localstorage data and UI data
   clearLocalStorage(){
     this.expenseObj = [];
     this.totalExpenses = 0;
@@ -170,11 +178,13 @@ class Budget {
     return true;
   }
 
+  // Show alerts on UI
   showAlert(color, message){
     this.alertDiv.innerHTML = `<div class="error white-text ${color}">${message}</div>`;
     setTimeout(()=> this.alertDiv.removeChild(this.alertDiv.firstChild), 3000);
   }
 
+  // Show alerts on UI
   showClearDataAlert(){
     this.clearAllDataDiv.innerHTML = `<div>
       <p>Are you sure? This will permanantly delete all your data. Click "Yes" to proceed.</p>
@@ -192,6 +202,7 @@ class Budget {
 function eventListeners(){
   const budget1 = new Budget();
 
+  // Click on Add Expense
   budget1.formExpenses.addEventListener('submit', (e) => {
     e.preventDefault();
     const addStatus = budget1.addExpense();
@@ -206,6 +217,7 @@ function eventListeners(){
     }
   })
   
+  // Click on Save Budget
   budget1.formBudget.addEventListener('submit', (e) => {
     e.preventDefault();
     const budgetStatus = budget1.addBudget();
@@ -213,12 +225,14 @@ function eventListeners(){
       budget1.showBudget();
       budget1.saveBudget();
       budget1.showBalance();
+      budget1.showAlert('green', 'Budget has been added.');
     } else {
       budget1.showAlert('red', 'Budget is required. Budget should be a number.');
     }
     
   })  
 
+  // Click on Edit or Delete in expenses table
   budget1.uiExpensesList.addEventListener('click', (e) => {
     e.preventDefault();
     if(e.target.parentNode.classList.contains('data-edit')){
@@ -249,11 +263,13 @@ function eventListeners(){
     }
   })
 
+  // Click on Clear All Data
   budget1.clearAllData.addEventListener('click', (e) => {
     e.preventDefault();
     budget1.showClearDataAlert();
   })
 
+  // Confirm Clear data, Yes or No
   budget1.clearAllDataDiv.addEventListener('click', (e) => {
     e.preventDefault();
     if(e.target.classList.contains('yes')){
