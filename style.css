@@ -1,0 +1,27 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.section {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+thead, h1 {
+  font-weight: 700;
+}
+form {
+  padding: 0 30px !important
+}
+.alert, .alert p {
+  padding: 2px 5px !important;
+  margin: 0;
+}
+
+.ui-label {
+  font-size: 2em;
+}
+.ui-numbers {
+  font-size: 1.5em;
+}
+.error {
+  padding: 5px 15px;
+}

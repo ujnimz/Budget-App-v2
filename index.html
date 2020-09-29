@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App JS</title>
+
+  <link rel="stylesheet" href="style.css">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="purple-text text-darken-3">:) Budget App</h3>
+        </div>
+      </div>    
+    </div>
+    
+    <div class="section">
+      <div class="form row">
+
+        <form id="form-expenses" class="col s12 m6">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">attach_money</i>
+              <input id="amount" type="text" class="validate">
+              <label for="amount">Amount</label>
+            </div>
+
+            <div class="input-field col s12">
+              <i class="material-icons prefix">description</i>
+              <input id="description" type="text" class="validate">
+              <label for="description">Description</label>
+            </div>
+
+            <div class="input-field col s12">
+              <button type="submit" class="btn waves-effect waves-light purple darken-3">Add<i class="material-icons right">send</i></button>
+            </div>
+          </div>
+        </form>
+      
+        <form id="form-budget" class="col s12 m6">
+          <div class="input-field">
+            <i class="material-icons prefix">description</i>
+            <input id="budget" type="text" class="validate">
+            <label for="budget">Budget</label>
+          </div>
+          <div class="input-field">
+            <button type="submit" class="btn waves-effect waves-light purple darken-3">Save<i class="material-icons right">save</i></button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <div id="item-alert" class="col s12"></div>
+         </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="row">
+        <div class="col s4">
+          <div class="center row">
+            <div id="budget-icon" class="ui-label light-blue-text col s12">
+              <i class="medium material-icons">monetization_on</i>
+            </div>
+            <div class="ui-label light-blue-text col s12">
+              Budget
+            </div>
+          </div>
+          <div class="center row">
+            <div class="ui-numbers col s12">
+              $ <span id="ui-budget-amount"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s4">
+          <div class="center row">
+            <div id="expenses-icon" class="ui-label orange-text col s12">
+              <i class="medium material-icons">card_travel</i>
+            </div>
+            <div class="ui-label orange-text col s12">
+              Expenses
+            </div>
+          </div>
+          <div class="center row">
+            <div class="ui-numbers col s12">
+              $ <span id="ui-expenses-amount"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s4">
+          <div class="center row">
+            <div id="balance-icon" class="ui-label teal-text col s12">
+              <i class="medium material-icons">account_balance_wallet</i>
+            </div>
+            <div class="ui-label teal-text col s12">
+              Balance
+            </div>
+          </div>
+          <div class="center row">
+            <div class="ui-numbers col s12">
+              $ <span id="ui-balance-amount">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="table-wrapper">
+        <table class="striped">
+          <thead class="purple lighten-5 purple-text text-darken-3">
+            <tr data-id="0">
+              <td>#</td>
+              <td>Description</td>
+              <td>Amount</td>
+              <td><a class="blue-text text-accent-4" href="#"><i class="material-icons prefix">edit</i></a></td>
+              <td><a class="red-text text-accent-4" href="#"><i class="material-icons prefix">delete</i></a></td>
+            </tr>
+          </thead>
+
+          <tbody id="ui-expenses-list"></tbody>
+          
+        </table>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <button class="btn waves-effect waves-light red" id="clear-all-data" name="clear-all">Clear all data
+            <i class="material-icons right">delete_forever</i>
+          </button>
+          <div id="clear-data-alert"></div>
+         </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="app.js" type="text/javascript"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
